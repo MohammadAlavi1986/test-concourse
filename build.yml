@@ -4,17 +4,21 @@ resources:
   source:
     uri: https://github.com/AureaMohammadAlavi/test-concourse
     branch: master
-- name: my-timer
-  type: time
+- name: myapp-image
+  type: docker-image
   source:
-        interval: 2m
+    username: smash1986
+    password: 123!@#abc8
+    repository: smash1986/fuckyou
+
 
 jobs:
   - name: build
     plan:
       - get: source-code
         trigger: true
-      - get: my-timer
-        trigger: true
       - task: build
         file: source-code/ci/task1.yml
+      - put: myapp-image
+        params:
+          build: source-code        
