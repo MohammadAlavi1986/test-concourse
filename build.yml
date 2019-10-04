@@ -21,4 +21,5 @@ jobs:
         file: source-code/ci/task1.yml
       - put: myapp-image
         params:
-          build: source-code        
+          build: source-code
+          CONTEXT: source-code
