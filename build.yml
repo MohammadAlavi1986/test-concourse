@@ -1,0 +1,14 @@
+resources:
+- name: source-code
+  type: git
+  source:
+    uri: https://github.com/AureaMohammadAlavi/test-concourse
+    branch: master
+
+
+jobs:
+  - name: build
+    plan:
+      - get: source-code
+      - task: build
+        file: source-code/ci/task1.yml
