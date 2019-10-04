@@ -4,12 +4,17 @@ resources:
   source:
     uri: https://github.com/AureaMohammadAlavi/test-concourse
     branch: master
-
+- name: my-timer
+  type: time
+  source:
+        interval: 2m
 
 jobs:
   - name: build
     plan:
       - get: source-code
+        trigger: true
+      - get: my-timer
         trigger: true
       - task: build
         file: source-code/ci/task1.yml
