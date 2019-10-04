@@ -10,5 +10,6 @@ jobs:
   - name: build
     plan:
       - get: source-code
+        trigger: true
       - task: build
         file: source-code/ci/task1.yml
